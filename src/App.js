@@ -25,7 +25,9 @@ class App extends Component {
       body: JSON.stringify(state)
     })
     .then(resp => resp.json())
-    .then(json => console.log(json))
+    .then(json => this.setState({
+      searchResults: json["tweets"]
+    }))
   }
 
   render() {
