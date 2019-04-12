@@ -6,7 +6,9 @@ class SearchResults extends Component {
     return (
       <div>
         {this.props.searchResults.map(result => {
-          return <Tweet html={result}/>
+          let newResult = {}
+          newResult["__html"] = result
+          return <Tweet html={newResult}/>
         })}
       </div>
     );
