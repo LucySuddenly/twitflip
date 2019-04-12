@@ -6,8 +6,8 @@ class SearchContainer extends Component {
   render() {
     return (
       <div>
-        <SearchForm/>
-        <SearchResults/>
+        <SearchForm searchSubmit={this.props.searchSubmit}/>
+        <SearchResults searchResults={this.props.searchResults}/>
       </div>
     );
   }

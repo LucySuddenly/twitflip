@@ -20,9 +20,10 @@ class SearchForm extends Component {
   render() {
     return (
       <div>
-        <form>
+        <form onSubmit={(ev) => this.props.searchSubmit(ev, this.state)}>
           <input type="text" placeholder="search terms" name="search_terms" onChange={(ev) => this.onChange(ev)} value={this.state.search_terms}/>
             <div className="radio">
+              Search Options:
              <label>
                <input type="radio" name="attitude" value="none" defaultChecked={true} />
                None
