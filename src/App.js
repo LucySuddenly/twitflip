@@ -31,9 +31,9 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <CollectionContainer/>
+      <div className="container" id="box">
         <SearchContainer searchSubmit={this.searchSubmit} searchResults={this.state.searchResults}/>
+        <CollectionContainer/>
       </div>
     );
   }
