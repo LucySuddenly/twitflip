@@ -5,7 +5,7 @@ import SearchResults from './SearchResults'
 class SearchContainer extends Component {
   render() {
     return (
-      <div>
+      <div className="searchContainer">
         <SearchForm searchSubmit={this.props.searchSubmit}/>
         <SearchResults searchResults={this.props.searchResults}/>
       </div>

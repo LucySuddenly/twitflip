@@ -17,6 +17,17 @@ class SearchForm extends Component {
     })
   }
 
+  attitudeAdjustment = (ev) => {
+    // debugger;
+    if(ev.target.value==="positive_attitude"){
+      console.log("positive")
+    this.setState({postive_attitude: true, negative_attitude: false})}
+    else if (ev.target.value==="negative_attitude"){
+      console.log("inside the netgatdskjfhgksjd")
+      this.setState({negative_attitude: true, positive_attitude: false})}
+    // console.log("how often is this firing")
+    }
+
   render() {
     return (
       <div>
@@ -31,13 +42,13 @@ class SearchForm extends Component {
             </div>
             <div className="radio">
              <label>
-               <input type="radio" name="attitude" value="positive_attitude" />
+               <input type="radio" name="attitude" value="positive_attitude" onChange={(ev)=>this.attitudeAdjustment(ev)}/>
                Tweets with a positive attitude
              </label>
             </div>
             <div className="radio">
              <label>
-               <input type="radio" name="attitude" value="negative_attitude" />
+               <input type="radio" name="attitude" value="negative_attitude" onChange={(ev)=>this.attitudeAdjustment(ev)}/>
                Tweets with a negative_attitude
              </label>
            </div>

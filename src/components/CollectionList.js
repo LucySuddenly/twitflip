@@ -3,8 +3,9 @@ import React, { Component } from 'react';
 class CollectionList extends Component {
   render() {
     return (
-      <div>
-
+      <div className="collectionList">
+        YOOoooooooOOOOO
+        what thef uck
       </div>
     );
   }

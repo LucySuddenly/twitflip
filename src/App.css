@@ -1,0 +1,24 @@
+/* .searchContainer {
+    display: grid;
+    grid-template-rows: 25%, 25%, 25%, 25% !important; 
+    grid-template-columns: 25%, 25%, 25%, 25% !important;
+    background-color: papayawhip; 
+ } */
+
+/* .collectionList {
+    grid-row: 2;
+} */
+
+/* .searchContainer {
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row: 1 / 4;
+    grid-column: 1;
+    flex-direction: row;
+    margin-left: 40%
+    background: teal
+} */
+
+#box {
+    border: 1px red dotted;
+}
