@@ -49,7 +49,7 @@ class SearchForm extends Component {
             <div className="radio">
              <label>
                <input type="radio" name="attitude" value="negative_attitude" onChange={(ev)=>this.attitudeAdjustment(ev)}/>
-               Tweets with a negative_attitude
+               Tweets with a negative attitude
              </label>
            </div>
           <input type="submit" />
