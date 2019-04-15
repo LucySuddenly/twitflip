@@ -15,7 +15,7 @@ class SearchResults extends Component {
               <Tweet html={newResult} />
             
             
-              <SelectDropdown tweet={result} chooseCollection={this.props.chooseCollection} collections={this.props.state.collections}/>
+              <SelectDropdown tweet={result} chooseCollection={this.props.chooseCollection} collections={this.props.state.collections} addToCollection={this.props.addToCollection}/>
             </div>
         })}
       </div>

@@ -7,7 +7,8 @@ class SearchContainer extends Component {
     return (
       <div className="searchContainer">
         <SearchForm searchSubmit={this.props.searchSubmit}/>
-        <SearchResults searchResults={this.props.searchResults} saveTweet={this.props.saveTweet} state={this.props.state} chooseCollection={this.props.chooseCollection}/>
+        <SearchResults searchResults={this.props.searchResults} saveTweet={this.props.saveTweet} state={this.props.state} chooseCollection={this.props.chooseCollection} addToCollection={this.props.addToCollection}
+        />
       </div>
     );
   }
