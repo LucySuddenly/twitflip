@@ -1,11 +1,26 @@
 import React, { Component } from 'react';
 
 class CollectionForm extends Component {
+  constructor(){
+    super()
+    this.state = {
+      newCollectionName: ""
+    }
+  }
+
+  updateNewCollection = (ev) => {
+    this.setState({
+      newCollectionName: ev.target.value
+    })
+  }
+
   render() {
     return (
-      <div>
-        only renders once save tweet to collection button is pressed
-      </div>
+      <form onSubmit={(ev) => this.props.submitNewCollection(ev, this.state.newCollectionName)}>
+        <label for="newCollection">New Collection:</label>
+        <input type="text" value={this.state.newCollectionName} name="newCollection" onChange={(ev) => this.updateNewCollection(ev)}></input>
+        <button name="Submit">Submit</button>
+      </form>
     );
   }
 }

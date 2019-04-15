@@ -6,7 +6,7 @@ class CollectionContainer extends Component {
   render() {
     return (
       <div>
-        <CollectionForm/>
+        <CollectionForm submitNewCollection={this.props.submitNewCollection}/>
         <CollectionList/>
       </div>
     );
