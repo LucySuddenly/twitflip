@@ -10,14 +10,12 @@ class App extends Component {
     super()
     this.state ={
       userExists: true,
-      showSelect: false,
       username: "",
       user_id: "",
       searchResults: [],
       collections: ["ariana grande", "euphredes"],
       apiurl: "//localhost:3000"
     }
-    this.saveTweet = this.saveTweet.bind(this)
   }
 
   signIn = (ev) => {
@@ -44,10 +42,6 @@ class App extends Component {
     }))
   }
 
-  saveTweet = (ev, tweet) => {
-    this.setState({showSelect: true})
-  }
-
   chooseCollection = () =>{
     console.log("inside collection choooooooser")
   }
@@ -65,7 +59,7 @@ class App extends Component {
             {' || '}
             <NavLink to="/collections">View My Collections</NavLink>
             <Route exact path="/collections" render={(props)=>(<CollectionContainer {...props} state={this.state}/>)}/>
-            <Route exact path="/search" render={(props)=>(<SearchContainer {...props} state={this.state} searchSubmit={this.searchSubmit} searchResults={this.state.searchResults} saveTweet={this.saveTweet}/>)}/>
+            <Route exact path="/search" render={(props)=>(<SearchContainer {...props} state={this.state} searchSubmit={this.searchSubmit} searchResults={this.state.searchResults}/>)}/>
           </>
           :
           <>
