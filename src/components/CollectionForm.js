@@ -4,7 +4,7 @@ class CollectionForm extends Component {
   render() {
     return (
       <div>
-        collection form
+        only renders once save tweet to collection button is pressed
       </div>
     );
   }

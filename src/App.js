@@ -10,12 +10,14 @@ class App extends Component {
     super()
     this.state ={
       userExists: true,
+      showSelect: false,
       username: "",
       user_id: "",
       searchResults: [],
-      collections: [],
+      collections: ["ariana grande", "euphredes"],
       apiurl: "//localhost:3000"
     }
+    this.saveTweet = this.saveTweet.bind(this)
   }
 
   signIn = (ev) => {
@@ -42,6 +44,14 @@ class App extends Component {
     }))
   }
 
+  saveTweet = (ev, tweet) => {
+    this.setState({showSelect: true})
+  }
+
+  chooseCollection = () =>{
+    console.log("inside collection choooooooser")
+  }
+
   render() {
     return (
      <div className="App" id="box">
@@ -55,7 +65,7 @@ class App extends Component {
             {' || '}
             <NavLink to="/collections">View My Collections</NavLink>
             <Route exact path="/collections" render={(props)=>(<CollectionContainer {...props} state={this.state}/>)}/>
-            <Route exact path="/search" render={(props)=>(<SearchContainer {...props} state={this.state} searchSubmit={this.searchSubmit} searchResults={this.state.searchResults}/>)}/>
+            <Route exact path="/search" render={(props)=>(<SearchContainer {...props} state={this.state} searchSubmit={this.searchSubmit} searchResults={this.state.searchResults} saveTweet={this.saveTweet}/>)}/>
           </>
           :
           <>
@@ -72,3 +82,19 @@ class App extends Component {
 }
 
 export default App; 
+
+//saving this down here til i know exactly where i'm making the request
+// let something
+//     fetch(this.state.apiurl + 'collection', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//           'Accept': 'application/json'
+//         },
+//         body: JSON.stringify(something)
+//       }
+//       )
+//       .then(response=>response.json())
+//       .then(json =>
+//         set the state with the json
+//       )

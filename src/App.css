@@ -28,3 +28,12 @@
     margin-left: 25%;
     margin-right: 25%;
   }
+
+  .tweet {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
+  button {
+      display: inline
+  }

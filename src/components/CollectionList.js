@@ -4,8 +4,7 @@ class CollectionList extends Component {
   render() {
     return (
       <div className="collectionList">
-        YOOoooooooOOOOO
-        what thef uck
+        will contain a bunch of collection items
       </div>
     );
   }

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
+import SelectDropdown from './SelectDropdown'
 import Tweet from './Tweet'
 
 
 class SearchResults extends Component {
-
-
 
   render() {
     return (
@@ -12,7 +11,16 @@ class SearchResults extends Component {
         {this.props.searchResults.map(result => {
           let newResult = {}
           newResult["__html"] = result
-          return <Tweet html={newResult}/>
+          return <div>
+          <Tweet html={newResult} />
+          <button onClick={(ev)=>{this.props.saveTweet(ev, result)}}>Save Tweet to Collection</button>
+          <span> {this.props.state.showSelect ?
+                <SelectDropdown tweet={result} chooseCollection={this.props.chooseCollection} collections={this.props.state.collections}/>
+                :
+                null
+                }
+          </span>
+          </div>
         })}
       </div>
     );
