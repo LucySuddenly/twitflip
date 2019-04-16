@@ -11,7 +11,7 @@ class DeleteTweetButton extends Component {
     render() {
         return (
             <>
-            <button onClick={this.tweeterDeleter}>Remove from collection</button>
+            <button onClick={this.tweeterDeleter} className='pad'>Remove from collection</button>
             </>
         )
     }
