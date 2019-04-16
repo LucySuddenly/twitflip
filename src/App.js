@@ -16,7 +16,6 @@ class App extends Component {
       user_id: "",
       searchResults: [],
       collections: [],
-      collection_tweets: [],
       apiurl: "//localhost:3000"
     }
   }
@@ -93,9 +92,13 @@ class App extends Component {
         position: 'bottom-left',
         duration: 2000
       })
+      if(this.state.collections.length>0){
       this.setState({
         collections: [...this.state.collections, json]
-      })
+      })}
+      else {
+        this.setState({collections: [json]})
+      }
     }
     )
   }
@@ -118,6 +121,19 @@ class App extends Component {
       })
   }
 
+  updateCollections = () => {
+    fetch(this.state.apiurl + '/user_collections', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({user_id: this.state.user_id})
+    })
+    .then(res => res.json())
+    .then(json => this.setState({collections: json}))
+  }
+
   render() {
     return (
      <div className="container">
@@ -129,7 +145,7 @@ class App extends Component {
             <br/>
             <NavLink to="/search">Search</NavLink>
             {' || '}
-            <NavLink to="/collections">View My Collections</NavLink>
+            <NavLink to="/collections" onClick={this.updateCollections}>View My Collections</NavLink>
             <Route exact path="/collections" render={(props)=>(<CollectionContainer {...props} submitNewCollection={this.submitNewCollection} state={this.state}/>)}/>
             <Route exact path="/search" render={(props)=>(<SearchContainer {...props} state={this.state} searchSubmit={this.searchSubmit} searchResults={this.state.searchResults} addToCollection={this.addToCollection}/>)}/>
           </div>

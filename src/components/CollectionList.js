@@ -16,6 +16,8 @@ class CollectionList extends Component {
   render() {
     return (
       <div className="collectionList">
+      {this.props.state.collections.length > 0 ?
+      <>
         <select onChange={(ev) => this.updateSelectedCollection(ev)}>
           {this.props.state.collections.map(collection => {
             return <option value={collection.id} >{collection.name}</option>
@@ -27,7 +29,10 @@ class CollectionList extends Component {
 
            return <Tweet html={newResult} />
         })}
-
+        </>
+        :
+        null
+      }
       </div>
     );
   }
