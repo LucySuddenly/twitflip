@@ -29,8 +29,6 @@ class SearchForm extends Component {
       this.setState({tweet_results: ev.target.value})
     }
 
-
-
   render() {
     return (
       <div>
