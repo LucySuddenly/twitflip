@@ -7,7 +7,7 @@ class CollectionContainer extends Component {
     return (
       <div>
         <CollectionForm submitNewCollection={this.props.submitNewCollection}/>
-        <CollectionList state={this.props.state}/>
+        <CollectionList state={this.props.state} updateSelectedCollection={this.props.updateSelectedCollection} deleteTweetFromState={this.props.deleteTweetFromState}/>
       </div>
     );
   }

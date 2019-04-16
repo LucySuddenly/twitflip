@@ -16,7 +16,9 @@ class App extends Component {
       user_id: "",
       searchResults: [],
       collections: [],
-      apiurl: "//localhost:3000"
+      collectionTweets: [],
+      apiurl: "//localhost:3000",
+      showSignIn: true
     }
   }
 
@@ -115,6 +117,13 @@ class App extends Component {
         body: JSON.stringify(postData)
       }
       )
+      .then(json=> {
+      if(this.state.collectionTweets.length >0){
+      this.setState({collectionTweets: [...this.state.collectionTweets, json]})}
+      else {
+        this.setState({collectionTweets: [json]})
+      }
+    })
       toaster.notify(`Tweet added to collection!`, {
         position: 'bottom-left',
         duration: 2000
@@ -134,6 +143,25 @@ class App extends Component {
     .then(json => this.setState({collections: json}))
   }
 
+  deleteTweetFromState=()=> {
+    console.log("sending it")
+  }
+
+  updateSelectedCollection = (ev) => {
+    fetch(this.state.apiurl + '/collection_tweets', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({collection_id: ev.target.value})
+    })
+    .then(res=> res.json())
+    .then(json =>
+      this.setState({collectionTweets: json})
+      )
+  }
+
   render() {
     return (
      <div className="container">
@@ -146,7 +174,7 @@ class App extends Component {
             <NavLink to="/search">Search</NavLink>
             {' || '}
             <NavLink to="/collections" onClick={this.updateCollections}>View My Collections</NavLink>
-            <Route exact path="/collections" render={(props)=>(<CollectionContainer {...props} submitNewCollection={this.submitNewCollection} state={this.state}/>)}/>
+            <Route exact path="/collections" render={(props)=>(<CollectionContainer {...props} submitNewCollection={this.submitNewCollection} state={this.state} updateSelectedCollection={this.updateSelectedCollection} deleteTweetFromState={this.deleteTweetFromState}/>)}/>
             <Route exact path="/search" render={(props)=>(<SearchContainer {...props} state={this.state} searchSubmit={this.searchSubmit} searchResults={this.state.searchResults} addToCollection={this.addToCollection}/>)}/>
           </div>
           :
