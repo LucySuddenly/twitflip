@@ -164,6 +164,12 @@ class App extends Component {
       )
   }
 
+  clearSelectedCollection = () => {
+    this.setState({
+      collectionTweets: []
+    })
+  }
+
   render() {
     return (
      <div className="container">
@@ -173,7 +179,7 @@ class App extends Component {
           {this.state.userExists ?
           <div className="loggedIn">
             <br/>
-            <NavLink activeStyle={{fontWeight: "bold"}}to="/search">Search</NavLink>
+            <NavLink activeStyle={{fontWeight: "bold"}} to="/search" onClick={this.clearSelectedCollection}>Search</NavLink>
             {' || '}
             <NavLink activeStyle={{fontWeight: "bold"}} to="/collections" onClick={this.updateCollections}>View My Collections</NavLink>
             <Route exact path="/collections" render={(props)=>(<CollectionContainer {...props} submitNewCollection={this.submitNewCollection} state={this.state} updateSelectedCollection={this.updateSelectedCollection} deleteTweetFromState={this.deleteTweetFromState}/>)}/>
