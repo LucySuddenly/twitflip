@@ -16,8 +16,8 @@ class SelectDropdown extends Component {
     render() {
         return (
             <>
-            <button onClick={this.showCollect}>Save Tweet to Collection</button>
-            { this.state.showSelect ?
+                <button onClick={this.showCollect}>Save Tweet to Collection</button>
+                { this.state.showSelect ?
             <>
             <form onSubmit={(ev)=>{this.props.addToCollection(ev, this.props.tweet)}}>
             <label>Pick a Collection:</label>
@@ -30,7 +30,7 @@ class SelectDropdown extends Component {
             </form>
             </>
             :
-            null}
+                null}
             </>
         );
     }

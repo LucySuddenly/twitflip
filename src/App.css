@@ -1,39 +1,32 @@
-/* .searchContainer {
-    display: grid;
-    grid-template-rows: 25%, 25%, 25%, 25% !important; 
-    grid-template-columns: 25%, 25%, 25%, 25% !important;
-    background-color: papayawhip; 
- } */
-
-/* .collectionList {
-    grid-row: 2;
-} */
-
-/* .searchContainer {
-    grid-column-start: 3;
-    grid-column-end: 5;
-    grid-row: 1 / 4;
-    grid-column: 1;
-    flex-direction: row;
-    margin-left: 40%
-    background: teal
-} */
-
-#box {
+.box {
     border: 1px red dotted;
 }
-.App {
+.signInPage {
+    display: block;
     text-align: center;
-    margin-top: 25%;
-    margin-left: 25%;
-    margin-right: 25%;
+    margin-top: 10%;
   }
 
-  .tweet {
-    margin-left: 10%;
-    margin-right: 10%;
+  .loggedIn {
+      text-align: center;
+      margin-top: 3%;
   }
 
-  button {
-      display: inline
+  .searchContainer {
+    display: block;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%; 
+  }
+
+  .container {
+      display: block;
+      justify-content: center;
   }
