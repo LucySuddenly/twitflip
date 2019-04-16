@@ -3,6 +3,7 @@ import Tweet from './Tweet.js'
 import DeleteTweetButton from './DeleteTweetButton.js';
 
 class CollectionList extends Component {
+  
 
   render() {
     return (
@@ -10,6 +11,7 @@ class CollectionList extends Component {
       {this.props.state.collections.length > 0 ?
       <>
         <select onChange={(ev) => this.props.updateSelectedCollection(ev)}>
+          <option value={this.props.state.collections[0].id}>Select a Collection</option>
           {this.props.state.collections.map(collection => {
             return <option value={collection.id} >{collection.name}</option>
           })}

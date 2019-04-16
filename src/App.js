@@ -173,9 +173,9 @@ class App extends Component {
           {this.state.userExists ?
           <div className="loggedIn">
             <br/>
-            <NavLink to="/search">Search</NavLink>
+            <NavLink activeStyle={{fontWeight: "bold"}}to="/search">Search</NavLink>
             {' || '}
-            <NavLink to="/collections" onClick={this.updateCollections}>View My Collections</NavLink>
+            <NavLink activeStyle={{fontWeight: "bold"}} to="/collections" onClick={this.updateCollections}>View My Collections</NavLink>
             <Route exact path="/collections" render={(props)=>(<CollectionContainer {...props} submitNewCollection={this.submitNewCollection} state={this.state} updateSelectedCollection={this.updateSelectedCollection} deleteTweetFromState={this.deleteTweetFromState}/>)}/>
             <Route exact path="/search" render={(props)=>(<SearchContainer {...props} state={this.state} searchSubmit={this.searchSubmit} searchResults={this.state.searchResults} addToCollection={this.addToCollection}/>)}/>
           </div>
