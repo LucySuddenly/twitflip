@@ -7,7 +7,8 @@ class SearchForm extends Component {
     this.state = {
       search_terms: "",
       positive_attitude: false,
-      negative_attitude: false
+      negative_attitude: false,
+      tweet_results: 5
     }
   }
 
@@ -24,12 +25,27 @@ class SearchForm extends Component {
       this.setState({negative_attitude: true, positive_attitude: false})}
     }
 
+    onSelect = (ev) => {
+      this.setState({tweet_results: ev.target.value})
+    }
+
+
+
   render() {
     return (
       <>
         <form onSubmit={(ev) => this.props.searchSubmit(ev, this.state)} className='pad'>
           <input type="text" placeholder="search terms" name="search_terms" onChange={(ev) => this.onChange(ev)} value={this.state.search_terms}/>
             <div className="radio pad">
+          <label>Number of Results</label>
+          <select onChange={(ev) => this.onSelect(ev)}>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="25">25</option>
+          </select>
+            <div className="radio">
               Search Options:
              <label>
                <input type="radio" name="attitude" value="none" defaultChecked={true}/>

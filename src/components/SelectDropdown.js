@@ -13,13 +13,18 @@ class SelectDropdown extends Component {
         this.setState({showSelect: true})
       }
 
+    onSubmit = (ev) => {
+        this.props.addToCollection(ev, this.props.tweet)
+        this.setState({showSelect: false})
+    }
+
     render() {
         return (
             <>
                 <button onClick={this.showCollect}>Save Tweet to Collection</button>
                 { this.state.showSelect ?
             <>
-            <form onSubmit={(ev)=>{this.props.addToCollection(ev, this.props.tweet)}}>
+            <form onSubmit={(ev) => this.onSubmit(ev)}>
             <label>Pick a Collection:</label>
             <select>
                 {this.props.collections.map((collection) => {
