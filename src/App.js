@@ -6,23 +6,37 @@ import {BrowserRouter as Router, Route, NavLink} from 'react-router-dom';
 import Signin from './components/Signin';
 import toaster from 'toasted-notes';
 import 'toasted-notes/src/styles.css';
+import LogoutButton from './components/LogoutButton';
 
 class App extends Component {
   constructor(){
     super()
-    this.state ={
-      userExists: true,
-      username: "",
-      user_id: "",
-      searchResults: [],
-      collections: [],
-      collectionTweets: [],
-      apiurl: "//localhost:3000",
+    if (localStorage.getItem("user_id")) {
+      this.state ={
+        userExists: true,
+        username: "",
+        user_id: localStorage.getItem("user_id"),
+        searchResults: [],
+        collections: [],
+        collectionTweets: [],
+        apiurl: "//localhost:3000"
+      }
+    } else {
+      this.state ={
+        userExists: false,
+        username: "",
+        user_id: "",
+        searchResults: [],
+        collections: [],
+        collectionTweets: [],
+        apiurl: "//localhost:3000"
+      }
     }
   }
 
   signIn = (ev) => {
     this.setState({username: ev.target.value})
+    localStorage.setItem("user_id", ev.target.value)
   }
 
   signInSubmit = (ev) => {
@@ -184,6 +198,7 @@ class App extends Component {
             <NavLink activeStyle={{fontWeight: "bold"}} to="/collections" onClick={this.updateCollections}>View My Collections</NavLink>
             <Route exact path="/collections" render={(props)=>(<CollectionContainer {...props} submitNewCollection={this.submitNewCollection} state={this.state} updateSelectedCollection={this.updateSelectedCollection} deleteTweetFromState={this.deleteTweetFromState}/>)}/>
             <Route exact path="/search" render={(props)=>(<SearchContainer {...props} state={this.state} searchSubmit={this.searchSubmit} searchResults={this.state.searchResults} addToCollection={this.addToCollection}/>)}/>
+            <LogoutButton/>
           </div>
           :
           <div className="signInPage">
