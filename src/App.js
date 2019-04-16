@@ -196,9 +196,10 @@ class App extends Component {
             <NavLink activeStyle={{fontWeight: "bold"}} to="/search" onClick={this.clearSelectedCollection}>Search</NavLink>
             {' || '}
             <NavLink activeStyle={{fontWeight: "bold"}} to="/collections" onClick={this.updateCollections}>View My Collections</NavLink>
+            {' '}
+            <LogoutButton/>
             <Route exact path="/collections" render={(props)=>(<CollectionContainer {...props} submitNewCollection={this.submitNewCollection} state={this.state} updateSelectedCollection={this.updateSelectedCollection} deleteTweetFromState={this.deleteTweetFromState}/>)}/>
             <Route exact path="/search" render={(props)=>(<SearchContainer {...props} state={this.state} searchSubmit={this.searchSubmit} searchResults={this.state.searchResults} addToCollection={this.addToCollection}/>)}/>
-            <LogoutButton/>
           </div>
           :
           <div className="signInPage">
