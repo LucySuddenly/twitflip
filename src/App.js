@@ -11,11 +11,12 @@ class App extends Component {
   constructor(){
     super()
     this.state ={
-      userExists: true,
+      userExists: false,
       username: "",
       user_id: "",
       searchResults: [],
       collections: [],
+      collection_tweets: [],
       apiurl: "//localhost:3000"
     }
   }
