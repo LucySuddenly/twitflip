@@ -14,7 +14,6 @@ class App extends Component {
       userExists: false,
       username: "",
       user_id: "",
-      userInfo: {},
       searchResults: [],
       collections: [],
       apiurl: "//localhost:3000"
