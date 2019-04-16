@@ -191,7 +191,7 @@ class App extends Component {
       <img src="http://i.picasion.com/gl/89/b3qZ.gif" alt="logo"></img>
       <Router>
         <>
-          {this.state.userExists ?
+          {localStorage.getItem("user_id") ?
           <div className="loggedIn">
             <br/>
             <NavLink activeStyle={{fontWeight: "bold"}} to="/search" onClick={this.clearSelectedCollection}>Search</NavLink>
@@ -203,6 +203,7 @@ class App extends Component {
             <Route exact path="/collections" render={(props)=>(<CollectionContainer {...props} submitNewCollection={this.submitNewCollection} state={this.state} updateSelectedCollection={this.updateSelectedCollection} deleteTweetFromState={this.deleteTweetFromState}/>)}/>
             <Route exact path="/search" render={(props)=>(<SearchContainer {...props} state={this.state} searchSubmit={this.searchSubmit} searchResults={this.state.searchResults} addToCollection={this.addToCollection}/>)}/>
             <Route path="/signin" render={()=> (<Redirect to='/search'/>)}/>
+            <Route exact path="/" render={()=> (<Redirect to='/search'/>)}/>
             <Route render={()=>(<NoMatch />)}/>
             </Switch>
           </div>
