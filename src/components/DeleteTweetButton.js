@@ -1,17 +1,11 @@
 import React, { Component } from 'react'
 
 class DeleteTweetButton extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            staaate: "is here"
-        }
-    }
 
     tweeterDeleter= () => {
         fetch(this.props.apiurl + `/tweets/${this.props.tweet.id}`, {method: 'DELETE'}
         )
-        this.props.deleteTweetFromState()
+        this.props.deleteTweetFromState(this.props.tweet)
     }
 
     render() {

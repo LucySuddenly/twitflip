@@ -142,8 +142,11 @@ class App extends Component {
     .then(json => this.setState({collections: json}))
   }
 
-  deleteTweetFromState=()=> {
-    console.log("sending it")
+  deleteTweetFromState=(tweet)=> {
+    let tempIndex = this.state.collectionTweets.indexOf(tweet)
+    let newArray = [...this.state.collectionTweets]
+    newArray.splice(tempIndex, 1)
+    this.setState({collectionTweets: newArray})
   }
 
   updateSelectedCollection = (ev) => {
