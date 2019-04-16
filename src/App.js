@@ -11,7 +11,7 @@ class App extends Component {
   constructor(){
     super()
     this.state ={
-      userExists: false,
+      userExists: true,
       username: "",
       user_id: "",
       searchResults: [],
@@ -27,6 +27,7 @@ class App extends Component {
   signInSubmit = (ev) => {
     ev.preventDefault()
     this.setState({userExists: true})
+
     let tempUser = {username: ev.target.children[1].value}
     fetch(this.state.apiurl + '/users', {
       method: 'POST',
@@ -40,6 +41,9 @@ class App extends Component {
     .then(json=> 
       this.setState({user_id: json.id})
     )
+    toaster.notify(`Welcome, ${this.state.username}!!`, {
+      duration: 3000
+    })
   }
 
   searchSubmit = (ev, state) => {
@@ -78,26 +82,26 @@ class App extends Component {
 
   render() {
     return (
-     <div className="App" id="box">
+     <div className="container">
+      <img src="http://i.picasion.com/gl/89/b3qZ.gif" alt="logo"></img>
       <Router>
-        <div>
+        <>
           {this.state.userExists ?
-          <>
-            Welcome, {this.state.username}!! 
+          <div className="loggedIn">
             <br/>
             <NavLink to="/search">Search</NavLink>
             {' || '}
             <NavLink to="/collections">View My Collections</NavLink>
             <Route exact path="/collections" render={(props)=>(<CollectionContainer {...props} state={this.state}/>)}/>
             <Route exact path="/search" render={(props)=>(<SearchContainer {...props} state={this.state} searchSubmit={this.searchSubmit} searchResults={this.state.searchResults} addToCollection={this.addToCollection}/>)}/>
-          </>
+          </div>
           :
-          <>
+          <div className="signInPage">
             <NavLink to="/signin">Sign up or Login</NavLink>
             <Route exact path="/signin" render={(props)=>(<Signin {...props} signIn={this.signIn} signInSubmit={this.signInSubmit}/>)}/>
-          </>
+          </div>
           }
-        </div>
+        </>
         
       </Router>
      </div>

@@ -18,14 +18,12 @@ class SearchForm extends Component {
   }
 
   attitudeAdjustment = (ev) => {
-    // debugger;
     if(ev.target.value==="positive_attitude"){
       console.log("positive")
     this.setState({postive_attitude: true, negative_attitude: false})}
     else if (ev.target.value==="negative_attitude"){
       console.log("inside the netgatdskjfhgksjd")
       this.setState({negative_attitude: true, positive_attitude: false})}
-    // console.log("how often is this firing")
     }
 
   render() {
