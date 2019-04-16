@@ -37,13 +37,11 @@ class App extends Component {
 
   signIn = (ev) => {
     this.setState({username: ev.target.value})
-    localStorage.setItem("user_id", ev.target.value)
+    
   }
 
   signInSubmit = (ev) => {
     ev.preventDefault()
-    this.setState({userExists: true})
-
     let tempUser = {username: ev.target.children[1].value}
     fetch(this.state.apiurl + '/users', {
       method: 'POST',
@@ -54,7 +52,9 @@ class App extends Component {
       body: JSON.stringify(tempUser)
     })
     .then(response=>response.json())
-    .then(json=>
+    .then(json=> {
+
+      localStorage.setItem("user_id", json.id)
       this.setState({user_id: json.id}, () => {
         fetch(this.state.apiurl + '/user_collections', {
           method: "POST",
@@ -69,6 +69,7 @@ class App extends Component {
           collections: json
         }))
       })
+    }
     )
     toaster.notify(`Welcome, ${this.state.username}!!`, {
       duration: 3000
