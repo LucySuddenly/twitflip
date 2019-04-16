@@ -14,8 +14,9 @@ class App extends Component {
       userExists: true,
       username: "",
       user_id: "",
+      userInfo: {},
       searchResults: [],
-      collections: ["ariana grande"],
+      collections: [],
       apiurl: "//localhost:3000"
     }
   }
@@ -38,8 +39,21 @@ class App extends Component {
       body: JSON.stringify(tempUser)
     })
     .then(response=>response.json())
-    .then(json=> 
-      this.setState({user_id: json.id})
+    .then(json=>
+      this.setState({user_id: json.id}, () => {
+        fetch(this.state.apiurl + '/user_collections', {
+          method: "POST",
+          headers:{
+            "Content-Type": "application/json",
+            Accept: "application/json"
+          },
+          body: JSON.stringify({user_id: this.state.user_id})
+        })
+        .then(resp => resp.json())
+        .then(json => this.setState({
+          collections: json
+        }))
+      })
     )
     toaster.notify(`Welcome, ${this.state.username}!!`, {
       duration: 3000
@@ -60,6 +74,30 @@ class App extends Component {
     .then(json => this.setState({
       searchResults: json["tweets"]
     }))
+  }
+
+  submitNewCollection = (ev, collectionName) => {
+    ev.preventDefault()
+    fetch(this.state.apiurl + "/collections", {
+      method: "POST",
+      headers:{
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({name: collectionName, user_id: this.state.user_id})
+    })
+    .then(resp => resp.json())
+    .then(json =>{
+
+      toaster.notify(`${collectionName} added to collections!`, {
+        position: 'bottom-left',
+        duration: 2000
+      })
+      this.setState({
+        collections: [...this.state.collections, json]
+      })
+    }
+    )
   }
 
   addToCollection = (ev, tweet) =>{
@@ -92,7 +130,7 @@ class App extends Component {
             <NavLink to="/search">Search</NavLink>
             {' || '}
             <NavLink to="/collections">View My Collections</NavLink>
-            <Route exact path="/collections" render={(props)=>(<CollectionContainer {...props} state={this.state}/>)}/>
+            <Route exact path="/collections" render={(props)=>(<CollectionContainer {...props} submitNewCollection={this.submitNewCollection} state={this.state}/>)}/>
             <Route exact path="/search" render={(props)=>(<SearchContainer {...props} state={this.state} searchSubmit={this.searchSubmit} searchResults={this.state.searchResults} addToCollection={this.addToCollection}/>)}/>
           </div>
           :
@@ -102,12 +140,10 @@ class App extends Component {
           </div>
           }
         </>
-        
       </Router>
      </div>
     );
   }
 }
 
-export default App; 
-
+export default App;
