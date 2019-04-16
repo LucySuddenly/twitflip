@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import CollectionContainer from './components/CollectionContainer';
 import SearchContainer from './components/SearchContainer';
-import {BrowserRouter as Router, Route, NavLink} from 'react-router-dom';
+import {BrowserRouter as Router, Route, NavLink, Switch, Redirect} from 'react-router-dom';
 import Signin from './components/Signin';
+import NoMatch from'./components/NoMatch';
 import toaster from 'toasted-notes';
 import 'toasted-notes/src/styles.css';
 import LogoutButton from './components/LogoutButton';
@@ -198,8 +199,12 @@ class App extends Component {
             <NavLink activeStyle={{fontWeight: "bold"}} to="/collections" onClick={this.updateCollections}>View My Collections</NavLink>
             {' '}
             <LogoutButton/>
+            <Switch>
             <Route exact path="/collections" render={(props)=>(<CollectionContainer {...props} submitNewCollection={this.submitNewCollection} state={this.state} updateSelectedCollection={this.updateSelectedCollection} deleteTweetFromState={this.deleteTweetFromState}/>)}/>
             <Route exact path="/search" render={(props)=>(<SearchContainer {...props} state={this.state} searchSubmit={this.searchSubmit} searchResults={this.state.searchResults} addToCollection={this.addToCollection}/>)}/>
+            <Route path="/signin" render={()=> (<Redirect to='/search'/>)}/>
+            <Route render={()=>(<NoMatch />)}/>
+            </Switch>
           </div>
           :
           <div className="signInPage">
