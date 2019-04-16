@@ -18,7 +18,6 @@ class App extends Component {
       collections: [],
       collectionTweets: [],
       apiurl: "//localhost:3000",
-      showSignIn: true
     }
   }
 
