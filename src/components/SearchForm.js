@@ -62,6 +62,7 @@ class SearchForm extends Component {
                Tweets with a negative attitude
              </label>
            </div>
+           </div>
           <input type="submit" />
         </form>
       </>
