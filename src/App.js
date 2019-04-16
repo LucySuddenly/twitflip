@@ -14,8 +14,9 @@ class App extends Component {
       userExists: false,
       username: "",
       user_id: "",
+      userInfo: {},
       searchResults: [],
-      collections: ["ariana grande"],
+      collections: [],
       apiurl: "//localhost:3000"
     }
   }
@@ -38,7 +39,20 @@ class App extends Component {
     })
     .then(response=>response.json())
     .then(json=>
-      this.setState({user_id: json.id})
+      this.setState({user_id: json.id}, () => {
+        fetch(this.state.apiurl + '/user_collections', {
+          method: "POST",
+          headers:{
+            "Content-Type": "application/json",
+            Accept: "application/json"
+          },
+          body: JSON.stringify({user_id: this.state.user_id})
+        })
+        .then(resp => resp.json())
+        .then(json => this.setState({
+          collections: json
+        }))
+      })
     )
   }
 
