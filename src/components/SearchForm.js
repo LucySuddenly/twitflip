@@ -26,23 +26,23 @@ class SearchForm extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={(ev) => this.props.searchSubmit(ev, this.state)}>
+      <>
+        <form onSubmit={(ev) => this.props.searchSubmit(ev, this.state)} className='pad'>
           <input type="text" placeholder="search terms" name="search_terms" onChange={(ev) => this.onChange(ev)} value={this.state.search_terms}/>
-            <div className="radio">
+            <div className="radio pad">
               Search Options:
              <label>
-               <input type="radio" name="attitude" value="none" defaultChecked={true} />
+               <input type="radio" name="attitude" value="none" defaultChecked={true}/>
                None
              </label>
             </div>
-            <div className="radio">
+            <div className="radio pad">
              <label>
                <input type="radio" name="attitude" value="positive_attitude" onChange={(ev)=>this.attitudeAdjustment(ev)}/>
                Tweets with a positive attitude
              </label>
             </div>
-            <div className="radio">
+            <div className="radio pad">
              <label>
                <input type="radio" name="attitude" value="negative_attitude" onChange={(ev)=>this.attitudeAdjustment(ev)}/>
                Tweets with a negative attitude
@@ -50,7 +50,7 @@ class SearchForm extends Component {
            </div>
           <input type="submit" />
         </form>
-      </div>
+      </>
     );
   }
 }

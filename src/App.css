@@ -30,3 +30,7 @@
       display: block;
       justify-content: center;
   }
+
+  .pad {
+    padding: 5px;
+  }
