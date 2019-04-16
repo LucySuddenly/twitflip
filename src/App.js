@@ -11,7 +11,7 @@ class App extends Component {
   constructor(){
     super()
     this.state ={
-      userExists: false,
+      userExists: true,
       username: "",
       user_id: "",
       searchResults: [],
@@ -187,7 +187,7 @@ class App extends Component {
           </div>
           :
           <div className="signInPage">
-            <NavLink to="/signin">Sign up or Login</NavLink>
+            <NavLink to="/signin" className="pad">Sign up or Login</NavLink>
             <Route exact path="/signin" render={(props)=>(<Signin {...props} signIn={this.signIn} signInSubmit={this.signInSubmit}/>)}/>
           </div>
           }
