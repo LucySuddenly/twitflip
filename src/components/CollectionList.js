@@ -29,7 +29,6 @@ class CollectionList extends Component {
     this.setState({showEditCollection: false})
     this.props.updateCollections()
     toaster.notify(`Name updated to ${ev.target.children[1].value}`)
-    this.forceUpdate()
   }
 
   setCurrentCollection = (ev) => {
