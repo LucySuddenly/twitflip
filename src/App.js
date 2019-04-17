@@ -132,14 +132,6 @@ class App extends Component {
         body: JSON.stringify(postData)
       }
       )
-      // .then(json=> {
-      // if(this.state.collectionTweets.length >0){
-      // this.setState({collectionTweets: [...this.state.collectionTweets, json]})}
-      // else {
-      //   this.setState({collectionTweets: [json]})
-      // }
-    // }
-    // )
       toaster.notify(`Tweet added to collection!`, {
         position: 'bottom-left',
         duration: 2000
@@ -199,15 +191,16 @@ class App extends Component {
         <>
           {localStorage.getItem("user_id") ?
           <div className="loggedIn">
-            <br/>
+            <br/><div className="link">
             <NavLink activeStyle={{fontWeight: "bold"}} to="/search" onClick={this.clearSelectedCollection}>Search</NavLink>
             {' || '}
-            <NavLink activeStyle={{fontWeight: "bold"}} to="/collections" onClick={this.updateCollections}>View My Collections</NavLink>
-            {' '}
+            <NavLink activeStyle={{fontWeight: "bold"}} to="/collections" onClick={this.updateCollections}>Collections</NavLink>
+            {' '}<br/>
             <LogoutButton/>
+            </div>
             <Switch>
             <Route exact path="/collections" render={(props)=>(<CollectionContainer {...props} submitNewCollection={this.submitNewCollection} state={this.state} updateSelectedCollection={this.updateSelectedCollection} deleteTweetFromState={this.deleteTweetFromState} showEditForm={this.showEditForm} updateCollections={this.updateCollections}/>)}/>
-            <Route exact path="/search" render={(props)=>(<SearchContainer {...props} state={this.state} searchSubmit={this.searchSubmit} searchResults={this.state.searchResults} addToCollection={this.addToCollection}/>)}/>
+            <Route exact path="/search" render={(props)=>(<SearchContainer {...props} state={this.state} searchSubmit={this.searchSubmit} searchResults={this.state.searchResults} addToCollection={this.addToCollection} updateCollections={this.updateCollections}/>)}/>
             <Route path="/signin" render={()=> (<Redirect to='/search'/>)}/>
             <Route exact path="/" render={()=> (<Redirect to='/search'/>)}/>
             <Route render={()=>(<NoMatch />)}/>

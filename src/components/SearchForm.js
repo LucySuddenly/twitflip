@@ -32,7 +32,7 @@ class SearchForm extends Component {
   render() {
     return (
       <>
-        <form onSubmit={(ev) => this.props.searchSubmit(ev, this.state)} className='pad'>
+        <form onSubmit={(ev) => this.props.searchSubmit(ev, this.state)} className='pad searchForm'>
           <input type="text" placeholder="search terms" name="search_terms" onChange={(ev) => this.onChange(ev)} value={this.state.search_terms}/>
             <div className="radio pad">
           <label>Number of Results</label>

@@ -3,6 +3,11 @@ import SearchForm from './SearchForm'
 import SearchResults from './SearchResults'
 
 class SearchContainer extends Component {
+
+  componentDidMount() {
+    this.props.updateCollections()
+  }
+
   render() {
     return (
       <div className="searchContainer">

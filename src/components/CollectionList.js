@@ -39,16 +39,19 @@ class CollectionList extends Component {
 
   render() {
     return (
-      <div className="collectionList">
+      <>
+      <div className="collectionForm">
       {this.props.state.collections.length > 0 ?
       <>
+      <form>
         <select onChange={(ev) => this.setCurrentCollection(ev)}>
           <option value={this.props.state.collections[0].id}>Select a Collection</option>
           {this.props.state.collections.map(collection => {
             return <option value={collection.id} id={collection.id}name={collection.name}>{collection.name}</option>
           })}
         </select>
-        <button type="submit" onClick={this.showEditCollection}>Edit this collection</button>
+        <button type="button" onClick={this.showEditCollection}>Edit this collection</button>
+        </form>
         {this.state.showEditCollection ?
         <form onSubmit={(ev) => {this.updateCollectionInfo(ev)}} className="pad">
           <label>Name</label>
@@ -58,20 +61,21 @@ class CollectionList extends Component {
         :
         null
         }
-        {this.props.state.collectionTweets.map( tweet => {
-            let newResult = {}
-            newResult["__html"] = tweet.html
-
-           return <>
-           <Tweet html={newResult} />
-           <DeleteTweetButton tweet={tweet} apiurl={this.props.state.apiurl} state={this.props.state} deleteTweetFromState={this.props.deleteTweetFromState}/>
-           </>
-        })}
         </>
         :
         null
       }
       </div>
+      {this.props.state.collectionTweets.map( tweet => {
+        let newResult = {}
+        newResult["__html"] = tweet.html
+
+       return <>
+       <Tweet html={newResult} />
+       <DeleteTweetButton tweet={tweet} apiurl={this.props.state.apiurl} state={this.props.state} deleteTweetFromState={this.props.deleteTweetFromState}/>
+       </>
+    })}
+    </>
     );
   }
 }

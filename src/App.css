@@ -15,15 +15,21 @@
   .searchContainer {
     display: block;
     justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 10%;
+    margin-right: 10%;
   }
 
   img {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 40%; 
+    width: 80%; 
+  }
+
+  .tweet {
+    display: block;
+    margin-left: 30%;
+    margin-right: 30%;
   }
 
   .container {
@@ -34,3 +40,33 @@
   .pad {
     padding: 5px;
   }
+  .searchForm {
+    background-color: linen;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding: 5px;
+  }
+
+  .collectionForm {
+    background-color: linen;
+    margin-left: 34%;
+    margin-right: 34%;
+    padding: 5px;
+  }
+
+  .link {
+    padding-bottom: 10px;
+    font-size: x-large;
+    background-color: linen;
+    margin-left: 34%;
+    margin-right: 34%;
+  }
+
+  body {
+    font-family: "tahoma";
+    background-image: url('./1026.gif');
+    /* background-size: cover; */
+    background-repeat: repeat;
+  }
+
+  /* background-image: url('https://i.imgur.com/YOjyEgs.jpg'); */
