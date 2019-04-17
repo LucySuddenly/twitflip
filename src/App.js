@@ -132,13 +132,14 @@ class App extends Component {
         body: JSON.stringify(postData)
       }
       )
-      .then(json=> {
-      if(this.state.collectionTweets.length >0){
-      this.setState({collectionTweets: [...this.state.collectionTweets, json]})}
-      else {
-        this.setState({collectionTweets: [json]})
-      }
-    })
+      // .then(json=> {
+      // if(this.state.collectionTweets.length >0){
+      // this.setState({collectionTweets: [...this.state.collectionTweets, json]})}
+      // else {
+      //   this.setState({collectionTweets: [json]})
+      // }
+    // }
+    // )
       toaster.notify(`Tweet added to collection!`, {
         position: 'bottom-left',
         duration: 2000
