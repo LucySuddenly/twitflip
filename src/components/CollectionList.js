@@ -37,6 +37,15 @@ class CollectionList extends Component {
     this.props.updateSelectedCollection(ev)
   }
 
+  deleteCollection = () => {
+    fetch(this.props.state.apiurl + `/collections/${this.state.currentCollectionId}`, {
+      method: "DELETE"}).then(() => {
+        this.props.updateCollections()
+        this.setState({showEditCollection: false})
+        window.location.reload()
+      })
+  }
+
   render() {
     return (
       <>
@@ -53,11 +62,14 @@ class CollectionList extends Component {
         <button type="button" onClick={this.showEditCollection}>Edit this collection</button>
         </form>
         {this.state.showEditCollection ?
+        <>
         <form onSubmit={(ev) => {this.updateCollectionInfo(ev)}} className="pad">
           <label>Name</label>
           <input type="text" placeholder={this.state.currentCollectionName}></input>
           <button type="submit">Update</button>
         </form>
+          <button onClick={this.deleteCollection}>Delete Collection</button>
+          </>
         :
         null
         }

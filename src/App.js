@@ -207,7 +207,7 @@ class App extends Component {
             </Switch>
           </div>
           :
-          <div className="signInPage">
+          <div className="signInPage link">
             <NavLink to="/signin" className="pad">Sign up or Login</NavLink>
             <Route exact path="/signin" render={(props)=>(<Signin {...props} signIn={this.signIn} signInSubmit={this.signInSubmit}/>)}/>
           </div>
