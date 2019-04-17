@@ -20,7 +20,7 @@ class App extends Component {
         searchResults: [],
         collections: [],
         collectionTweets: [],
-        apiurl: "//localhost:3000"
+        apiurl: "http://twitflip-backend.herokuapp.com"
       }
     } else {
       this.state ={
@@ -30,7 +30,7 @@ class App extends Component {
         searchResults: [],
         collections: [],
         collectionTweets: [],
-        apiurl: "//localhost:3000"
+        apiurl: "http://twitflip-backend.herokuapp.com"
       }
     }
   }
