@@ -186,10 +186,14 @@ class App extends Component {
     })
   }
 
+  showEditForm = () => {
+    // sutdfag
+  }
+
   render() {
     return (
      <div className="container">
-      <img src="http://i.picasion.com/gl/89/b3qZ.gif" alt="logo"></img>
+      <a href='/search'><img src="http://i.picasion.com/gl/89/b3qZ.gif" alt="logo"></img></a>
       <Router>
         <>
           {localStorage.getItem("user_id") ?
@@ -201,7 +205,7 @@ class App extends Component {
             {' '}
             <LogoutButton/>
             <Switch>
-            <Route exact path="/collections" render={(props)=>(<CollectionContainer {...props} submitNewCollection={this.submitNewCollection} state={this.state} updateSelectedCollection={this.updateSelectedCollection} deleteTweetFromState={this.deleteTweetFromState}/>)}/>
+            <Route exact path="/collections" render={(props)=>(<CollectionContainer {...props} submitNewCollection={this.submitNewCollection} state={this.state} updateSelectedCollection={this.updateSelectedCollection} deleteTweetFromState={this.deleteTweetFromState} showEditForm={this.showEditForm} updateCollections={this.updateCollections}/>)}/>
             <Route exact path="/search" render={(props)=>(<SearchContainer {...props} state={this.state} searchSubmit={this.searchSubmit} searchResults={this.state.searchResults} addToCollection={this.addToCollection}/>)}/>
             <Route path="/signin" render={()=> (<Redirect to='/search'/>)}/>
             <Route exact path="/" render={()=> (<Redirect to='/search'/>)}/>
