@@ -78,6 +78,9 @@ class App extends Component {
 
   searchSubmit = (ev, state) => {
     ev.preventDefault()
+    if (state.search_terms === "") {
+     return 
+    }
     fetch(this.state.apiurl + "/search", {
       method: "POST",
       headers:{
