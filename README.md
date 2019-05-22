@@ -2,11 +2,6 @@
 
 TwitFlip is an app for storing collections of Twitter tweets. Users can log in, search new tweets, create collections, and save tweets to those collection.
 
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
-
 ### Installing
 
 Clone the repository down, run npm install
