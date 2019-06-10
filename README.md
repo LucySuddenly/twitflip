@@ -1,16 +1,43 @@
-# TwitFlip
+# TwitFlip - Frontend
 
-TwitFlip is an app for storing collections of Twitter tweets. Users can log in, search new tweets, create collections, and save tweets to those collection.
+[TwitFlip](http://twitflip.herokuapp.com/) is an app for searching Twitter tweets and storing them in collections. 
 
-### Installing
+[This](https://github.com/LucySuddenly/twitflip-backend) is a link the the backend repository.
 
-Clone the repository down, run npm install
+## Motivation
 
-also clone down the [backend](https://github.com/LucySuddenly/twitflip-backend)
+I wanted to create an app using Twitter's API that used more than one endpoint: both search and conversion of tweets to html blocks.
+
+## Screenshots
+Search
+<img src="https://i.imgur.com/FMwFIUh.png" width="800">
+
+Collections
+<img src="https://i.imgur.com/NjRcnxO.png" width="800">
+
+## Technology Used
+
+- React.JS
+- React Router
+
+## Features
+
+Users Can:
+- create an account
+- search for tweets with options: positive or negative attitude and number of results
+- create collections
+- save tweets from searches to collections
+- view collections
+
+## Installation
+
+clone the repo and run npm install
+
+npm start to begin the server and open TwitFlip
 
 ## Contributing
 
-Pull requests are welcome!
+Contributions are welcome, submit a pull request!
 
 ## Authors
 
