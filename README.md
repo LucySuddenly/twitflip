@@ -10,9 +10,11 @@ I wanted to create an app using Twitter's API that used more than one endpoint: 
 
 ## Screenshots
 Search
+
 <img src="https://i.imgur.com/FMwFIUh.png" width="800">
 
 Collections
+
 <img src="https://i.imgur.com/NjRcnxO.png" width="800">
 
 ## Technology Used
